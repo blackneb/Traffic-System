@@ -32,21 +32,12 @@ const NavBar = () => {
   ]
 
   const menusMobile = [
-    { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
-    { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
-    { title: 'Users', path: '/users', src: <CgProfile />, auth:"admin" },
-    { title:'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
-    { title: 'Progress', path: '/adminprogress', src: <PercentageOutlined />, auth:"admin" },
-    { title: 'New Vehicle Insurance', path: '/newinsurance', src: <PlusOutlined />, auth:"proposer"},
-    { title: 'New Health Insurance', path: '/newhealthinsurance', src: <PlusOutlined />, auth:"proposer"},
-    { title: 'My Claims', path: '/userclaims', src: <SiAcclaim />, auth:"proposer" },
-    { title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
-    { title: 'Bids', path: '/bids', src: <ProfileOutlined />, auth:"garage" },
-    { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},
-    { title: 'Subitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
-    { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
-    { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
-    { title: 'Progress', path: '/expertprogress', src: <PercentageOutlined />, auth:"expert" },    
+    { title: 'Traffics', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+    { title: 'Accidents', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
+    { title: 'Statistics', path: '/users', src: <CgProfile />, auth:"admin" },
+    { title:'Documentation',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
+    { title: 'My keys', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+    { title: 'Accidents', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
 ]
 
   const items: MenuProps['items'] = [

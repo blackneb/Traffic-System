@@ -18,23 +18,12 @@ const Sidebar = () => {
     const location = useLocation()
     const [userType, setUserType] = useState("expert");
     const Menus = [
-        { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
-        { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
-        { title: 'Users', path: '/users', src: <CgProfile />, auth:"admin" },
-        { title: 'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"expert"},
-        { title: 'Experts', path:'/adminexperts', src:<GrUserExpert/>, auth:"admin" },
-        { title: 'Progress', path: '/adminprogress', src: <PercentageOutlined />, auth:"admin" },
-        { title: 'Vehicle Insurance', path: '/newinsurance', src: <AiFillCar />, auth:"proposer"},
-        { title: 'Health Insurance', path: '/newhealthinsurance', src: <GiHealthNormal />, auth:"proposer"},
-        { title: 'Claims', path: '/userclaims', src: <SiAcclaim />, auth:"proposer" },
-        { title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
-        { title: 'My Contract', path: '/proposercontract', src: <MdAutorenew />, auth:"proposer" },
-        { title: 'Bids', path: '/bids', src: <ProfileOutlined />, auth:"garage" },
-        { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},
-        { title: 'Submitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
-        { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
-        { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
-        { title: 'Contract Renewal', path: '/contractrenewal', src: <MdAutorenew />, auth:"expert" },
+        { title: 'Traffics', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+        { title: 'Accidents', path: '/aaccidents', src: <SiFuturelearn />, auth:"admin" },
+        { title: 'Statistics', path: '/users', src: <CgProfile />, auth:"admin" },
+        { title:'Documentation',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
+        { title: 'My keys', path:'/mykeys', src:<AiFillCar/>, auth:"admin"},
+        { title: 'Accidents', path:'/taccidents', src:<AiFillCar/>, auth:"admin"},
     ]
     const sideBarLists = Menus.filter((items:any) => items.auth === userType);
 
@@ -45,12 +34,6 @@ const Sidebar = () => {
                     open ? 'w-60' : 'w-fit'
                 } hidden sm:block relative h-full duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-white`}
             >
-                <BsArrowLeftCircle
-                    className={`${
-                        !open && 'rotate-180'
-                    } absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-white`}
-                    onClick={() => setOpen(!open)}
-                />
                 <Link to='/'>
                     <div className={`flex ${'gap-x-4'} items-center`}>
                         {true && (
