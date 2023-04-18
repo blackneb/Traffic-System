@@ -1,11 +1,12 @@
 import React from 'react'
 import './App.css'
 import NavBar from './widgets/layouts/NavBar'
+import DashboardMain from './layouts/DashboardMain'
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      <DashboardMain/>
       <h1 className="text-3xl underline">
         Hello world!
       </h1>
