@@ -7,7 +7,8 @@ import { SiFuturelearn } from 'react-icons/si'
 import { SiOpenaccess,SiAcclaim } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import { AiFillCar } from 'react-icons/ai'
-import { GiMechanicGarage,GiHealthNormal } from 'react-icons/gi'
+import { GiMechanicGarage,GiHealthNormal,GiPoliceBadge } from 'react-icons/gi'
+import { FcStatistics } from 'react-icons/fc'
 import { HiDocumentAdd } from 'react-icons/hi'
 import { GrUserExpert } from 'react-icons/gr'
 import { MdAutorenew } from 'react-icons/md'
@@ -18,9 +19,9 @@ const Sidebar = () => {
     const location = useLocation()
     const [userType, setUserType] = useState("expert");
     const Menus = [
-        { title: 'Traffics', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+        { title: 'Traffics', path:'/vehicle', src:<GiPoliceBadge/>, auth:"admin"},
         { title: 'Accidents', path: '/aaccidents', src: <SiFuturelearn />, auth:"admin" },
-        { title: 'Statistics', path: '/users', src: <CgProfile />, auth:"admin" },
+        { title: 'Statistics', path: '/users', src: <FcStatistics />, auth:"admin" },
         { title:'Documentation',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
         { title: 'My keys', path:'/mykeys', src:<AiFillCar/>, auth:"admin"},
         { title: 'Accidents', path:'/taccidents', src:<AiFillCar/>, auth:"admin"},
@@ -38,7 +39,7 @@ const Sidebar = () => {
                     <div className={`flex ${'gap-x-4'} items-center`}>
                         {true && (
                             <span className='text-xl font-medium whitespace-nowrap dark:text-zinc-700'>
-                                AIS
+                                Traffic System
                             </span>
                         )}
                     </div>

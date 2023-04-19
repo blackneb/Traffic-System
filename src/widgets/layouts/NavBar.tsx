@@ -13,6 +13,7 @@ import { SiOpenaccess,SiAcclaim } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import { AiFillCar } from 'react-icons/ai'
 import { GiMechanicGarage } from 'react-icons/gi'
+import { GiPoliceBadge } from 'react-icons/gi'
 import { HiDocumentAdd } from 'react-icons/hi'
 import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FileProtectOutlined } from '@ant-design/icons'
 
@@ -32,7 +33,7 @@ const NavBar = () => {
   ]
 
   const menusMobile = [
-    { title: 'Traffics', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+    { title: 'Traffics', path:'/vehicle', src:<GiPoliceBadge/>, auth:"admin"},
     { title: 'Accidents', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
     { title: 'Statistics', path: '/users', src: <CgProfile />, auth:"admin" },
     { title:'Documentation',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
