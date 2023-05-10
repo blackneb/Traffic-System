@@ -14,6 +14,7 @@ import Keys from '../components/Keys';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import Statistics from '../components/Statistics';
+import RegisterAccident from '../components/RegisterAccident';
 
 function DashboardMain() {
   const breadcrumb = useSelector((state:any) => state.breadcrumb);
@@ -39,13 +40,14 @@ function DashboardMain() {
             <Routes>
             <Route path='/' element={<Home />} />
                 <Route path='/traffics' element={<Traffics/>} />
-                <Route path='/accidents' element={<Accidents/>} />
+                <Route path='/taccidents' element={<Accidents/>} />
                 <Route path='/analysis' element={<Analysis/>} />
                 <Route path='/documentation' element={<Documentation/>} />
                 <Route path='/keys' element={<Keys/>} />
                 <Route path='/login' element={<Login/>} />
                 <Route path='/signup' element={<Signup/>} />
                 <Route path='/statistics' element={<Statistics/>} />
+                <Route path='/registeraccident' element={<RegisterAccident/>} />
               </Routes>
           </div>
         </div>

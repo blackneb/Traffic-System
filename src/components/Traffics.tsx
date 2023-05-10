@@ -5,21 +5,22 @@ import { PlusOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import TrafficCreateAccount from './Modals/TrafficCreateAccount';
 import {traffics} from '../data/traffics';
 import TrafficsList from './Tables/TrafficsList';
+import { add_breadcrumb } from '../redux/Actions';
 
 const Traffics = () => {
   const [openModal, setOpenModal] = useState(false);
   const data:any[] = traffics;
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
-    {title:"Experts",path:"/course"},
+    {title:"Traffics",path:"/traffics"},
   ]
   const onViewRow = (record:any) => {
     setOpenModal(true);
   }
 
   useEffect(() => {
-    //dispatch(add_breadcrumb(breadcrumb));
+    dispatch(add_breadcrumb(breadcrumb));
   },[])
   return (
     <div className='mt-4 ml-4'>
