@@ -16,12 +16,12 @@ const Login = ({setlog, setCreateAccount}:any) => {
   const onSubmit = handleSubmit(()=>{
     setlog(true);
   })
-  useEffect(() => {
+//   useEffect(() => {
 
-    axios.post("http://localhost:8000/api/ais/adminlogin",{userName:"abela34",password:"12345"}).then((response) => {
-      console.log(response.data);
-    })
-  }, [])
+//     axios.post("http://localhost:8000/api/ais/adminlogin",{userName:"abela34",password:"12345"}).then((response) => {
+//       console.log(response.data);
+//     })
+//   }, [])
   return (
     <div>
       <section className="flex flex-col md:flex-row h-screen items-center">
