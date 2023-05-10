@@ -16,6 +16,7 @@ import Signup from '../components/Signup';
 import Statistics from '../components/Statistics';
 
 function DashboardMain() {
+  const breadcrumb = useSelector((state:any) => state.breadcrumb);
   return (
     <div className="App">
       <BrowserRouter>
@@ -26,10 +27,17 @@ function DashboardMain() {
         </div>
         <div className='w-full'>
           <div className='ml-4 mt-2'>
+            <Breadcrumb>
+              {
+                breadcrumb.map((items:any,index:any) => (
+                  <Breadcrumb.Item key={index}>{items.title}</Breadcrumb.Item>
+                ))
+              }              
+            </Breadcrumb>
           </div>
           <div className="scrollbar scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-100 " >
             <Routes>
-                <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home />} />
                 <Route path='/traffics' element={<Traffics/>} />
                 <Route path='/accidents' element={<Accidents/>} />
                 <Route path='/analysis' element={<Analysis/>} />
@@ -38,7 +46,6 @@ function DashboardMain() {
                 <Route path='/login' element={<Login/>} />
                 <Route path='/signup' element={<Signup/>} />
                 <Route path='/statistics' element={<Statistics/>} />
-                v
               </Routes>
           </div>
         </div>
