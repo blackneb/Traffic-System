@@ -63,7 +63,7 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
           <Form.Item
             label="Phone Number"
             name="Phone"
-            rules={[{ required: true, message: 'Please Enter Your Phone Number!' }]}
+            rules={[{pattern: /^[\+]?[0-9]{3}[-\s\.]?[0-9]{9}$/,message: 'Please enter a valid Phone Number'},{ required: true, message: 'Please Enter Your Phone Number!' }]}
           >
             <Input />
           </Form.Item>
