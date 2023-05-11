@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE } from "./ActionTypes";
+import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
     {title:"Home",path:"/"},
@@ -8,6 +8,8 @@ const initialStateBasicInformation:any[]=[];
 const initialStateDriverInformation:any[]=[];
 const initialStateInvolvedVehicles:any[]=[];
 const initialStatePeopleInInvolvedVehicle:any[]=[];
+const initialStateAddress:any[]=[];
+const initialStateRegistrationBasicInformation:any[]=[];
 
 export const breadcrumbReducers = ( state=initialStateBreadCrumb, action:any ) => {
     const { type,payload } = action;
@@ -53,6 +55,26 @@ export const peopleInInvolvedVehicleReducers = ( state=initialStatePeopleInInvol
     const { type, payload } = action;
     switch(type){
         case ADD_PEOPLE_IN_INVOLVED_VEICLE:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const addressReducers = ( state=initialStateAddress, action:any ) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_ADDRESS:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const registrationBasicInformationReducers = ( state=initialStateRegistrationBasicInformation, action:any ) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_REGISTRATION_BASIC_INFORMATION:
             return payload;
         default:
             return state;
