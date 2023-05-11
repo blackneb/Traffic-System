@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 import { Button, Form, Input, Radio, Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { add_address } from '../../redux/Actions';
 
-const Address = ({next,setCreateAccountReterive}:any) => {
-  //const AddressDefaultValue = useSelector((state:any) => state.Address);
-  //const dispatch = useDispatch();
+const Address = ({next,prev,setCreateAccountReterive}:any) => {
+  const AddressDefaultValue = useSelector((state:any) => state.address);
+  const dispatch = useDispatch();
   const onFinish = (values: any) => {
     console.log('Success:', values);
-    next();
+    dispatch(add_address(values));
   };
   
   const onFinishFailed = (errorInfo: any) => {
@@ -18,7 +19,7 @@ const Address = ({next,setCreateAccountReterive}:any) => {
     <div className='flex justify-center my-4 '>
       <Form
       name="Address"
-      //initialValues={AddressDefaultValue}
+      initialValues={AddressDefaultValue}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -46,7 +47,10 @@ const Address = ({next,setCreateAccountReterive}:any) => {
         </div>
         <div className='flex flex-row justify-center'>
           <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
-            Next
+            Create Account
+          </Button>
+          <Button style={{ margin: '0 8px' }} type="default" onClick={() => prev()}>
+            Prev
           </Button>
           <Button style={{ margin: '0 8px' }} onClick={() => { setCreateAccountReterive(false) }}>
             Back to Login

@@ -2,12 +2,14 @@ import React, {useState} from 'react'
 import { Button, Form, Input, Radio, Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { add_registraion_basic_information } from '../../redux/Actions';
 
 const BasicInformation = ({next,setCreateAccountReterive}:any) => {
-  //const basicInformationDefaultValue = useSelector((state:any) => state.basicInformation);
-  //const dispatch = useDispatch();
+  const registrationBasicInformation = useSelector((state:any) => state.registrationBasicInformation);
+  const dispatch = useDispatch();
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    dispatch(add_registraion_basic_information(values));
     next();
   };
   
@@ -18,7 +20,7 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
     <div className='flex justify-center my-4 '>
       <Form
       name="basicInformation"
-      //initialValues={basicInformationDefaultValue}
+      initialValues={registrationBasicInformation}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
