@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker} from 'antd';
+import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker, InputNumber} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -34,6 +34,33 @@ const BasicInformation = ({next}:any) => {
         colon={false}
       >
         <div className='flex flex-col'>
+          <Form.Item 
+              label="Plate Number"
+              >
+              <Input.Group compact>
+                  <Form.Item
+                  name="plateCode"
+                  noStyle
+                  rules={[{ required: true, message: 'plate code is required' }]}
+                  >
+                  <InputNumber style={{ width: '20%' }} placeholder="Code" />
+                  </Form.Item>
+                  <Form.Item
+                  name='plateCountry'
+                  noStyle
+                  rules={[{ required: true, message: 'plate country is required' }]}
+                  >
+                  <Input style={{ width: '30%' }} placeholder="City" />
+                  </Form.Item>
+                  <Form.Item
+                  name='plateNumber'
+                  noStyle
+                  rules={[{ required: true, message: 'plate number is required' }]}
+                  >
+                  <Input style={{ width: '50%' }} placeholder="Number" />
+                  </Form.Item>
+              </Input.Group>
+          </Form.Item>
           <Form.Item
             label="Date"
             name="date"
