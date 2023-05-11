@@ -64,7 +64,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
               label="Driver First Name"
               name="driverFirstName"
-              rules={[{ required: true, message: 'Please Enter the first name!' }]}
+              rules={[{ required: true, message: 'Please Enter the driver first name!' }]}
           >
             <Input />
           </Form.Item>
@@ -72,7 +72,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
             label="Driver Last Name"
             name="driverLastName"
-            rules={[{ required: true, message: 'Please Enter the first name!' }]}
+            rules={[{ required: true, message: 'Please Enter the driver first name!' }]}
           >
            <Input />
           </Form.Item>
@@ -80,7 +80,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
             label="Owner First Name"
             name="ownerFirstName"
-            rules={[{ required: true, message: 'Please Enter the first name!' }]}
+            rules={[{ required: true, message: 'Please Enter the owner first name!' }]}
           >
            <Input />
           </Form.Item>
@@ -88,7 +88,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
             label="Owner Last Name"
             name="ownerLastName"
-            rules={[{ required: true, message: 'Please Enter the first name!' }]}
+            rules={[{ required: true, message: 'Please Enter the owner first name!' }]}
           >
            <Input />
           </Form.Item>
@@ -96,7 +96,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
             label="Driver License Number"
             name="driverLicenseNumber"
-            rules={[{ required: true, message: 'Please Enter the first name!' }]}
+            rules={[{ required: true, message: 'Please Enter the driver license number!' }]}
           >
            <Input />
           </Form.Item>
@@ -104,7 +104,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
             label="Driver Phone Number"
             name="driverPhoneNumber"
-            rules={[{ required: true, message: 'Please Enter the first name!' }]}
+            rules={[{ required: true, message: 'Please Enter the driver phone number!' }]}
           >
            <Input />
           </Form.Item>
@@ -112,7 +112,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           <Form.Item
             label="Owner Phone Number"
             name="ownerPhoneNumber"
-            rules={[{ required: true, message: 'Please Enter the first name!' }]}
+            rules={[{ required: true, message: 'Please Enter the owner phone number!' }]}
           >
            <Input />
           </Form.Item>
