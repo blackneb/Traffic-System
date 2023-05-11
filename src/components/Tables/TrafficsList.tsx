@@ -83,7 +83,7 @@ const TrafficsList = ({data}:any) => {
         width={1200}
       >
       </Modal>
-      <p>Total Experts</p>
+      <p>Traffic Table</p>
       <Input className='mb-2' placeholder="Search With Traffic Name" allowClear onChange={onChange} />
       <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.fname.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
