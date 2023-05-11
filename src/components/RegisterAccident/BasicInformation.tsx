@@ -2,19 +2,16 @@ import React, { useState } from 'react'
 import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker, InputNumber} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { add_basic_information } from '../../redux/Actions';
 
 const BasicInformation = ({next}:any) => {
-    //const dispatch = useDispatch();
-    //const basicinformation = useSelector((state:any) => state.basicInformation);
-    //const address = useSelector((state:any) => state.address);
-    //const accountSetupDefaultValues = useSelector((state:any) => state.accountSetup);
+    const dispatch = useDispatch();
+    const basicInformation = useSelector((state:any) => state.basicInformation);
   
     const onFinish = async (values: any) => {
       console.log('Success:', values);
-      //dispatch(add_account_set_up(values));
-      //const submittedData = {...basicinformation, ...address, ...values};
-      //console.log("submitted Data:",submittedData);
-      //alert(JSON.stringify(submittedData,null,2));
+      dispatch(add_basic_information(values));
+      next();
     };
     
     const onFinishFailed = (errorInfo: any) => {
@@ -24,7 +21,7 @@ const BasicInformation = ({next}:any) => {
     <div className='flex justify-center my-4'>
        <Form
         name="basic"
-        //initialValues={accountSetupDefaultValues}
+        initialValues={basicInformation}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
@@ -150,7 +147,7 @@ const BasicInformation = ({next}:any) => {
           </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
-          <Button style={{ margin: '0 8px' }} type="default" onClick={() => next()}>
+          <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
             Next
           </Button>
         </div>

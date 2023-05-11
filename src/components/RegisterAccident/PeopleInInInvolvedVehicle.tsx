@@ -2,19 +2,16 @@ import React, { useState } from 'react'
 import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker,InputNumber} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { add_people_in_involved_vehicle } from '../../redux/Actions';
 
 const PeopleInInInvolvedVehicle = ({prev}:any) => {
-    //const dispatch = useDispatch();
-    //const basicinformation = useSelector((state:any) => state.basicInformation);
-    //const address = useSelector((state:any) => state.address);
-    //const accountSetupDefaultValues = useSelector((state:any) => state.accountSetup);
+    const dispatch = useDispatch();
+    const peopleInInvolvedVehicle = useSelector((state:any) => state.peopleInInvolvedVehicle);
+    
   
     const onFinish = async (values: any) => {
       console.log('Success:', values);
-      //dispatch(add_account_set_up(values));
-      //const submittedData = {...basicinformation, ...address, ...values};
-      //console.log("submitted Data:",submittedData);
-      //alert(JSON.stringify(submittedData,null,2));
+      dispatch(add_people_in_involved_vehicle(values));
     };
     
     const onFinishFailed = (errorInfo: any) => {
@@ -24,7 +21,7 @@ const PeopleInInInvolvedVehicle = ({prev}:any) => {
     <div className='flex justify-center my-4'>
        <Form
         name="basic"
-        //initialValues={accountSetupDefaultValues}
+        initialValues={peopleInInvolvedVehicle}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
