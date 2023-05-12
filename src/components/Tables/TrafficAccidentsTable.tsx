@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Button, Space, Table,Input, Modal } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
+import AccidentDetail from '../Modals/AccidentDetail';
 
 const { Search } = Input;
 
@@ -89,6 +90,7 @@ const TrafficAccidentTable = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
+        <AccidentDetail/>
       </Modal>
       <p>Accidents Table</p>
       <Input className='mb-2' placeholder="Search With Driver Name" allowClear onChange={onChange} />
