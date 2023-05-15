@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { add_breadcrumb } from '../redux/Actions';
 import ReactMap from './Map/ReactMap'
 import { Card } from 'antd'
 import ChartYearAccident from './Charts/ChartYearAccident'
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const breadcrumb:any[] = [
+    {title:"Home",path:"/"}
+  ]
+  useEffect(() => {
+    dispatch(add_breadcrumb(breadcrumb));
+  },[])
   return (
     <div className='flex flex-col justify-center'>
       <div className='flex flex-row justify-evenly'>
