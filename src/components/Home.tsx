@@ -4,6 +4,7 @@ import { add_breadcrumb } from '../redux/Actions';
 import ReactMap from './Map/ReactMap'
 import { Card } from 'antd'
 import ChartYearAccident from './Charts/ChartYearAccident'
+import AccidentTypes from './Charts/AccidentTypes';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Home = () => {
         </div>
         <div className='flex flex-row justify-center'>
           <ChartYearAccident/>
-          
+          <AccidentTypes/>
         </div>
     </div>
   )
