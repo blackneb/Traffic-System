@@ -1,5 +1,6 @@
 import React from 'react'
-import { Descriptions, Badge } from 'antd'
+import { Descriptions, Badge } from 'antd';
+import ReactMap from '../Map/ReactMap';
 
 const AccidentDetail = () => {
   return (
@@ -45,6 +46,8 @@ const AccidentDetail = () => {
                 Phone Number: Kebede Abebe
                 <br />
             </Descriptions.Item>
+            <Descriptions.Item label="Location" span={3}> <ReactMap/> </Descriptions.Item>
+            <Descriptions.Item label="Accident Images" span={3}>Any Driver</Descriptions.Item>
         </Descriptions>
     </div>
   )

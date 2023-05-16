@@ -16,7 +16,7 @@ const Home = () => {
   },[])
   return (
     <div className='flex flex-col justify-center'>
-      <div className='flex flex-row justify-evenly'>
+      <div className='flex flex-row justify-evenly flex-wrap'>
           <Card className='mx-4 my-4' size="small" title="To Day" style={{ width: 300 }}>
             <p>Number</p>
           </Card>
@@ -27,9 +27,12 @@ const Home = () => {
             <p>Number</p>
           </Card>
         </div>
-        <div className='flex flex-row justify-center'>
+        <div className='flex flex-row justify-evenly flex-wrap'>
           <ChartYearAccident/>
           <AccidentTypes/>
+        </div>
+        <div className='flex flex-row justify-evenly flex-wrap'>
+          <ReactMap/>
         </div>
     </div>
   )
