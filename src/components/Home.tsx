@@ -5,6 +5,7 @@ import ReactMap from './Map/ReactMap'
 import { Card } from 'antd'
 import ChartYearAccident from './Charts/ChartYearAccident'
 import AccidentTypes from './Charts/AccidentTypes';
+import AgeAccidentChart from './Charts/AgeAccidentChart';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Home = () => {
         <div className='flex flex-row justify-evenly flex-wrap'>
           <ChartYearAccident/>
           <AccidentTypes/>
+          <AgeAccidentChart/>
         </div>
         <div className='flex flex-row justify-evenly flex-wrap'>
           <ReactMap/>
