@@ -32,7 +32,7 @@ export const options = {
   },
 };
 
-const AgeAccidentChart = () => {
+const CityAccidentChart = () => {
     const data = {
         labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
         datasets: [
@@ -79,4 +79,4 @@ const AgeAccidentChart = () => {
   )
 }
 
-export default AgeAccidentChart
+export default CityAccidentChart
