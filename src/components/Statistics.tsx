@@ -8,8 +8,8 @@ import VehicleSpeedAccidentChart from './Charts/VehicleSpeedAccidentChart';
 import RoadTypesAccidentChart from './Charts/RoadTypesAccidentChart';
 import GenderAccidentChart from './Charts/GenderAccidentChart';
 import CityAccidentChart from './Charts/CityAccidentChart';
-import DeathChart from './Charts/DeathChart';
 import AgeAccidentChart from './Charts/AgeAccidentChart';
+import { DeathChart } from './Charts/DeathChart';
 
 const Statistics = () => {
   const dispatch = useDispatch();
