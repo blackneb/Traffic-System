@@ -54,6 +54,15 @@ const NavBar = () => {
     {
       key: '2',
       label: (
+        <Link to='/changepassword' >
+          password
+        </Link>
+      ),
+      icon: <UserOutlined />,
+    },
+    {
+      key: '3',
+      label: (
         <a target="_blank" rel="noopener noreferrer" href="#">
           Settings
         </a>
@@ -61,7 +70,7 @@ const NavBar = () => {
       icon: <SettingOutlined />,
     },
     {
-      key: '3',
+      key: '4',
       label: (
         <a target="_blank" rel="noopener noreferrer" href="#">
           Log out
