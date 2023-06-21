@@ -1,5 +1,5 @@
 import React from 'react'
-import { Descriptions, Badge } from 'antd';
+import { Descriptions,QRCode, Badge } from 'antd';
 import ReactMap from '../Map/ReactMap';
 
 const AccidentDetail = () => {
@@ -48,6 +48,11 @@ const AccidentDetail = () => {
             </Descriptions.Item>
             <Descriptions.Item label="Location" span={3}> <ReactMap/> </Descriptions.Item>
             <Descriptions.Item label="Accident Images" span={3}>Any Driver</Descriptions.Item>
+            <Descriptions.Item label="QR Code">
+              <div>
+              < QRCode value="https://ant.design/" size={250} />
+              </div>
+            </Descriptions.Item>
         </Descriptions>
     </div>
   )
