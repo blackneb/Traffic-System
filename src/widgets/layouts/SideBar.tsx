@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
 import { SiFuturelearn } from 'react-icons/si'
@@ -20,11 +19,10 @@ const Sidebar = () => {
     const [userType, setUserType] = useState("expert");
     const Menus = [
         { title: 'Traffics', path:'/traffics', src:<GiPoliceBadge/>, auth:"admin"},
-        { title: 'Accidents', path: '/taccidents', src: <SiFuturelearn />, auth:"admin" },
-        { title: 'Register Accident', path: '/registeraccident', src: <SiFuturelearn />, auth:"admin" },
+        { title: 'Accidents', path: '/taccidents', src: <SiFuturelearn />, auth:"traffic" },
+        { title: 'Register Accident', path: '/registeraccident', src: <SiFuturelearn />, auth:"traffic" },
         { title: 'Statistics', path: '/statistics', src: <FcStatistics />, auth:"admin" },
         { title:'Documentation',path:'/documentation',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
-        { title: 'My keys', path:'/keys', src:<AiFillCar/>, auth:"admin"},
         { title: 'Accidents', path:'/aaccidents', src:<AiFillCar/>, auth:"admin"},
     ]
     const sideBarLists = Menus.filter((items:any) => items.auth === userType);
