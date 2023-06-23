@@ -1,12 +1,60 @@
 import React from 'react'
 import { Button, Form, Input, Upload} from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+
+import axios from 'axios';
+
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+interface json{
+  username:any;
+  password:any;
+  firstname:any;
+  lastname:any;
+  phone:any;
+  pimage:any;
+  admin_id:any;
+  email:any;
+}
 
 
 const TrafficCreateAccount = () => {
+    const formData = new FormData();
     const onFinish = async (values: any) => {
-        console.log('Success:', values);
+        //console.log('Success:', values);
+        console.log(values.pimage.file);
+        //console.log(JSON.stringify(jsonArray,null,2));
+        formData.delete('image');
+        formData.append("image", values.pimage.file);
+        // for( let i=0;i<values.pimage.file.length; i++){
+        //   formData.append("image[]", values.file[i]);
+        // }
+      axios.post( "http://blackneb.com/images/Upload_file.php", formData).then(res => {
+        console.log(res.data);
+        if(res.data.status === "success"){
+          console.log("posting info...")
+          const jsonArray:json = {
+            "username":values.userName,
+            "password":values.password,
+            "firstname":values.firstName,
+            "lastname":values.lastName,
+            "phone":values.phone,
+            "pimage":res.data.name,
+            "admin_id":"2",
+            "email":values.email
+          }
+          axios.post("http://ais.blackneb.com/api/traffic/addnewtraffic",jsonArray).then(response => {
+            console.log(res.data);
+          })
+        }
+        else{
+            console.log("Item Upload Failed");
+        }
+    })
       };
-      
+
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
@@ -47,10 +95,24 @@ const TrafficCreateAccount = () => {
           </Form.Item>
           <Form.Item
                 label="Profile Pic"
-                name="profilePic"
+                name="pimage"
                 rules={[{ required: true, message: 'Please input Traffics image!' }]}
            >
-            <Input />
+            <Upload maxCount={1} listType="picture-card" beforeUpload={(file:any) =>{
+              return new Promise((resolve:any,reject:any) => {
+                if(file.size > 2){
+                  reject("File size exceed");
+                }
+                else{
+                  resolve("Success");
+                }
+              })
+            }} >
+              <div className=''>
+                <UploadOutlined/>
+                <div style={{ marginTop: 8 }}>Upload</div>
+              </div>
+            </Upload>
           </Form.Item>
           <Form.Item
                 label="Email"

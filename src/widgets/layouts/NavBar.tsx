@@ -5,6 +5,7 @@ import { Input, Avatar } from 'antd';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
@@ -25,6 +26,8 @@ const { Search } = Input;
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+    const avatar = useSelector((state:any) => state.userType.p_image);
+    const avatarImage = "https://blackneb.com/images/photos/" + avatar;
     const onSearch = (value: string) => alert(value);
     const Menus = [
       { title: 'Home', path: '/' },
@@ -113,7 +116,7 @@ const NavBar = () => {
             <div className='hidden md:flex justify-end ml-4'>
                     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
                     <Dropdown menu={{ items }} placement="bottom" arrow>
-                      <Avatar className='mx-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
+                      <Avatar src={avatarImage} className='mx-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
                     </Dropdown>
             </div>
             <div className="-mr-2 flex md:hidden">
