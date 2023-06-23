@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Modal } from 'antd';
 import { PlusOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import TrafficCreateAccount from './Modals/TrafficCreateAccount';
-import {traffics} from '../data/traffics';
 import TrafficsList from './Tables/TrafficsList';
 import { add_breadcrumb } from '../redux/Actions';
+import { traffics } from '../redux/Actions';
+import axios from 'axios';
 
 const Traffics = () => {
   const [openModal, setOpenModal] = useState(false);
-  const data:any[] = traffics;
   const dispatch = useDispatch();
+  const data = useSelector((state:any) => state.traffics);
+  console.log(data);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"Traffics",path:"/traffics"},
@@ -21,6 +23,15 @@ const Traffics = () => {
 
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    try{
+      axios.get("http://ais.blackneb.com/api/traffic/gettraffic").then((response:any) => {
+        console.log(response.data);
+        dispatch(traffics(response.data));
+      })
+    }
+    catch(error){
+      console.log(error)
+    }
   },[])
   return (
     <div className='mt-4 ml-4'>

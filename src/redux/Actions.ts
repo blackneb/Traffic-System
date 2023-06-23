@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION, ADD_USER_TYPE } from "./ActionTypes";
+import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION, ADD_USER_TYPE, TRAFFICS } from "./ActionTypes";
 
 export const add_breadcrumb = (breadcrumb:any) => {
     return{
@@ -55,3 +55,10 @@ export const add_user_type=(usertype:any)=>{
         payload:usertype,
     };
 };
+
+export const traffics = (traffic:any) => {
+    return{
+        type:TRAFFICS,
+        payload:traffic
+    }
+}

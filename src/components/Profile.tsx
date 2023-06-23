@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import { Form, Input, Button } from 'antd';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const profileData = useSelector((state:any) => state.userType);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"Profile",path:"/profile"},
@@ -44,19 +46,19 @@ const Profile = () => {
             >
               <div className='flex flex-col'>
               <Form.Item label="User Name" name="username" rules={[{ required: true, message: 'Please Enter username!' }]}>
-                <Input placeholder=""/>
+                <Input placeholder="" defaultValue={profileData.user_name}/>
               </Form.Item>
               <Form.Item label="First Name" name="firstName" rules={[{ required: true, message: 'Please Enter First Name!' }]}>
-                <Input placeholder=""/>
+                <Input placeholder="" defaultValue={profileData.f_name}/>
               </Form.Item>
               <Form.Item label="Last Name" name="lastName" rules={[{ required: true, message: 'Please Enter Last Name!' }]}>
-                <Input placeholder=""/>
+                <Input placeholder="" defaultValue={profileData.l_name}/>
               </Form.Item>
               <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please Enter Email!' }]}>
-                <Input placeholder=""/>
+                <Input placeholder="" defaultValue={profileData.email}/>
               </Form.Item>
               <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please enter Phone!' }]}>
-                <Input placeholder=""/>
+                <Input placeholder="" defaultValue={profileData.phone}/>
               </Form.Item>
               </div>
               <div className='flex flex-row justify-center'>

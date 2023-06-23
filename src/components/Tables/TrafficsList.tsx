@@ -7,12 +7,11 @@ const { Search } = Input;
 
 interface DataType{
     id:string,
-    fname:string,
-    lname:string,
-    username:string,
+    f_name:string,
+    l_name:string,
+    user_name:string,
     email:string,
-    phone:string,
-    createdAt:string
+    phone:string
   }
 
 const TrafficsList = ({data}:any) => {
@@ -35,18 +34,18 @@ const TrafficsList = ({data}:any) => {
   const columns: ColumnsType<DataType> = [
     {
       title: 'User Name',
-      dataIndex: 'id',
-      key: 'id',
-      sorter: (a, b) => a.id.length - b.id.length,
-      sortOrder: sortedInfo.columnKey === 'id' ? sortedInfo.order : null,
+      dataIndex: 'user_name',
+      key: 'user_name',
+      sorter: (a, b) => a.user_name.length - b.user_name.length,
+      sortOrder: sortedInfo.columnKey === 'user_name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'User Name',
-      dataIndex: 'fname',
-      key: 'fname',
-      sorter: (a, b) => a.fname.length - b.fname.length,
-      sortOrder: sortedInfo.columnKey === 'fname' ? sortedInfo.order : null,
+      title: 'Name',
+      dataIndex: 'f_name',
+      key: 'f_name',
+      sorter: (a, b) => a.f_name.length - b.f_name.length,
+      sortOrder: sortedInfo.columnKey === 'f_name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -85,7 +84,7 @@ const TrafficsList = ({data}:any) => {
       </Modal>
       <p>Traffic Table</p>
       <Input className='mb-2' placeholder="Search With Traffic Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.fname.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}}  onChange={handleChange} />
     </div>
   )
 }

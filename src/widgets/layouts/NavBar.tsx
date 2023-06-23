@@ -28,6 +28,7 @@ const NavBar = () => {
     const location = useLocation();
     const avatar = useSelector((state:any) => state.userType.p_image);
     const avatarImage = "https://blackneb.com/images/photos/" + avatar;
+    const userName = useSelector((state:any) => state.userType.user_name);
     const onSearch = (value: string) => alert(value);
     const Menus = [
       { title: 'Home', path: '/' },
@@ -118,6 +119,7 @@ const NavBar = () => {
                     <Dropdown menu={{ items }} placement="bottom" arrow>
                       <Avatar src={avatarImage} className='mx-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
                     </Dropdown>
+                    <p>{userName}</p>
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
