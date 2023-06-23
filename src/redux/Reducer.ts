@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION } from "./ActionTypes";
+import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION, ADD_USER_TYPE } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
     {title:"Home",path:"/"},
@@ -10,6 +10,8 @@ const initialStateInvolvedVehicles:any[]=[];
 const initialStatePeopleInInvolvedVehicle:any[]=[];
 const initialStateAddress:any[]=[];
 const initialStateRegistrationBasicInformation:any[]=[];
+const initialStateUserType:any={
+}
 
 export const breadcrumbReducers = ( state=initialStateBreadCrumb, action:any ) => {
     const { type,payload } = action;
@@ -80,3 +82,13 @@ export const registrationBasicInformationReducers = ( state=initialStateRegistra
             return state;
     };
 };
+
+export const userTypeReducers = (state=initialStateUserType, action:any)=>{
+    const { type, payload } = action;
+    switch(type){
+        case ADD_USER_TYPE:
+            return payload;
+        default:
+            return state;
+    }
+}

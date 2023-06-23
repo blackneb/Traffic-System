@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import {composeWithDevTools} from '@redux-devtools/extension';
-import { breadcrumbReducers,basicInformationReducers,driverInformationReducers,involvedVehicleReducers,peopleInInvolvedVehicleReducers,addressReducers,registrationBasicInformationReducers } from "./Reducer";
+import { breadcrumbReducers,basicInformationReducers,driverInformationReducers,involvedVehicleReducers,peopleInInvolvedVehicleReducers,addressReducers,registrationBasicInformationReducers,userTypeReducers } from "./Reducer";
 
 const reducers = combineReducers(
     {
@@ -11,6 +11,7 @@ const reducers = combineReducers(
         peopleInInvolvedVehicle:peopleInInvolvedVehicleReducers,
         address:addressReducers,
         registrationBasicInformation:registrationBasicInformationReducers,
+        userType:userTypeReducers,
     }
 );
 
