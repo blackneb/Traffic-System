@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
@@ -25,8 +25,9 @@ const Sidebar = () => {
         { title:'Documentation',path:'/documentation',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
         { title: 'Accidents', path:'/aaccidents', src:<AiFillCar/>, auth:"admin"},
     ]
-    const sideBarLists = Menus.filter((items:any) => items.auth === userType);
-
+    useEffect(() => {
+        const sideBarLists = Menus.filter((items:any) => items.auth === userType);
+    }, [])
     return (
         <>
             <div

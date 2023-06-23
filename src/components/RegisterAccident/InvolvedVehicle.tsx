@@ -6,12 +6,12 @@ import { add_involved_vehicle } from '../../redux/Actions';
 
 const InvolvedVehicle = ({next,prev}:any) => {
     const dispatch = useDispatch();
+    const [data, setData] = useState<any>([]);
     const involvedVehicle = useSelector((state:any) => state.involvedVehicle);
   
     const onFinish = async (values: any) => {
       console.log('Success:', values);
       dispatch(add_involved_vehicle(values));
-      next();
     };
     
     const onFinishFailed = (errorInfo: any) => {
@@ -117,8 +117,13 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
 
         </div>
-        <div className='flex flex-row justify-center'>
+        <div className='flex flex-row justify-center my-4'>
             <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
+              ADD
+            </Button>
+        </div>
+        <div className='flex flex-row justify-center'>
+            <Button style={{ margin: '0 8px' }} type="default" onClick={() => next()}>
               Next
             </Button>
             <Button style={{ margin: '0 8px' }} type="default" onClick={() => prev()}>

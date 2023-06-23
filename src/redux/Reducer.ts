@@ -6,8 +6,12 @@ const initialStateBreadCrumb:any[] = [
 
 const initialStateBasicInformation:any[]=[];
 const initialStateDriverInformation:any[]=[];
-const initialStateInvolvedVehicles:any[]=[];
-const initialStatePeopleInInvolvedVehicle:any[]=[];
+const initialStateInvolvedVehicles = {
+    involvedVehicles:[],
+}
+const initialStatePeopleInInvolvedVehicle = {
+    injuredPersons:[],
+}
 const initialStateAddress:any[]=[];
 const initialStateRegistrationBasicInformation:any[]=[];
 const initialStateUserType:any={
@@ -47,7 +51,7 @@ export const involvedVehicleReducers = ( state=initialStateInvolvedVehicles, act
     const { type, payload } = action;
     switch(type){
         case ADD_INVOLVED_VEHICLE:
-            return payload;
+            return {...state,involvedVehicles:[...state.involvedVehicles,payload]}
         default:
             return state;
     };
@@ -57,7 +61,7 @@ export const peopleInInvolvedVehicleReducers = ( state=initialStatePeopleInInvol
     const { type, payload } = action;
     switch(type){
         case ADD_PEOPLE_IN_INVOLVED_VEICLE:
-            return payload;
+            return {...state,injuredPersons:[...state.injuredPersons,payload]}
         default:
             return state;
     };
