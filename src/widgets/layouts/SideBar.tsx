@@ -12,11 +12,12 @@ import { HiDocumentAdd } from 'react-icons/hi'
 import { GrUserExpert } from 'react-icons/gr'
 import { MdAutorenew } from 'react-icons/md'
 import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FileProtectOutlined } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true)
     const location = useLocation()
-    const [userType, setUserType] = useState("expert");
+    const userType = useSelector((state:any) => state.userType.accounttype);
     const Menus = [
         { title: 'Traffics', path:'/traffics', src:<GiPoliceBadge/>, auth:"admin"},
         { title: 'Accidents', path: '/taccidents', src: <SiFuturelearn />, auth:"traffic" },
@@ -45,7 +46,7 @@ const Sidebar = () => {
                 </Link>
 
                 <ul className='pt-6'>
-                    {Menus.map((menu, index) => (
+                    {Menus.filter((items:any) => items.auth === userType).map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
                                 className={`flex items-center gap-x-2 p-1 text-base font-normal rounded-lg cursor-pointer dark:text-zinc-700 hover:bg-gray-200 dark:hover:bg-white dark:hover:shadow-lg

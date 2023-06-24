@@ -38,6 +38,9 @@ const Profile = () => {
   };
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    const date  = new Date();
+    let dateMDY = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    console.log(dateMDY)
   },[])
   return (
     <div className='mx-4 my-4 flex justify-center'>
