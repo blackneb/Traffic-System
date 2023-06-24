@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION, ADD_USER_TYPE, TRAFFICS } from "./ActionTypes";
+import { ADD_BREADCRUMB,ADD_BASIC_INFORMATION,ADD_DRIVER_INFORMATION,ADD_INVOLVED_VEHICLE,ADD_PEOPLE_IN_INVOLVED_VEICLE,ADD_ADDRESS,ADD_REGISTRATION_BASIC_INFORMATION, ADD_USER_TYPE, TRAFFICS, ACCIDENTS, CLEAR_ACCIDENTS, ACCIDENT_ONLY, CLEAR_ACCIDENT_ONLY } from "./ActionTypes";
 
 export const add_breadcrumb = (breadcrumb:any) => {
     return{
@@ -60,5 +60,33 @@ export const traffics = (traffic:any) => {
     return{
         type:TRAFFICS,
         payload:traffic
+    };
+};
+
+export const add_accidents = (accident:any) => {
+    return{
+        type:ACCIDENTS,
+        payload:accident
+    }
+}
+
+export const clear_accidents = (clear_accident:any) => {
+    return{
+        type:CLEAR_ACCIDENTS,
+        payload:clear_accident
+    }
+}
+
+export const clear_accidents_only = (clear_accident_only:any) => {
+    return{
+        type:CLEAR_ACCIDENT_ONLY,
+        payload:clear_accident_only
+    }
+}
+
+export const only_accidents = (only:any) => {
+    return{
+        type:ACCIDENT_ONLY,
+        payload:only
     }
 }

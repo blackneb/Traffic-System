@@ -8,17 +8,17 @@ const { Search } = Input;
 
 interface DataType{
     id:string,
-    vehicleId:string,
     date:string,
     time:string,
-    driverName:string,
-    numberOfVehicles:string,
+    city:string,
+    road_type:string,
   }
 
 const AllAccideltsTable = ({data}:any) => {
-    const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
+  const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [selectedvalue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -30,6 +30,7 @@ const AllAccideltsTable = ({data}:any) => {
     setSortedInfo(sorter as SorterResult<DataType>);
   };
   const onViewRow = (record:any) => {
+    setSelectedValue(record);
     setOpenModal(true);
   }
   const columns: ColumnsType<DataType> = [
@@ -42,11 +43,11 @@ const AllAccideltsTable = ({data}:any) => {
       ellipsis: true,
     },
     {
-      title: 'Vehicle ID',
-      dataIndex: 'vehicleId',
-      key: 'vehicleId',
-      sorter: (a, b) => a.vehicleId.length - b.vehicleId.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleId' ? sortedInfo.order : null,
+      title: 'City',
+      dataIndex: 'city',
+      key: 'city',
+      sorter: (a, b) => a.city.length - b.city.length,
+      sortOrder: sortedInfo.columnKey === 'city' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -66,11 +67,11 @@ const AllAccideltsTable = ({data}:any) => {
       ellipsis: true,
     },
     {
-        title: 'Driver Name',
-        dataIndex: 'driverName',
-        key: 'driverName',
-        sorter: (a, b) => a.driverName.length - b.driverName.length,
-        sortOrder: sortedInfo.columnKey === 'driverName' ? sortedInfo.order : null,
+        title: 'Road_Type',
+        dataIndex: 'road_type',
+        key: 'road_type',
+        sorter: (a, b) => a.road_type.length - b.road_type.length,
+        sortOrder: sortedInfo.columnKey === 'v' ? sortedInfo.order : null,
         ellipsis: true,
       },
     {
@@ -90,11 +91,11 @@ const AllAccideltsTable = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
-        <AccidentDetail/>
+        <AccidentDetail data={selectedvalue}/>
       </Modal>
       <p>Accidents Table</p>
       <Input className='mb-2' placeholder="Search With Driver Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.driverName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

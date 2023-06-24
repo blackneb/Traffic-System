@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import {composeWithDevTools} from '@redux-devtools/extension';
-import { breadcrumbReducers,basicInformationReducers,driverInformationReducers,involvedVehicleReducers,peopleInInvolvedVehicleReducers,addressReducers,registrationBasicInformationReducers,userTypeReducers,trafficReducers } from "./Reducer";
+import { breadcrumbReducers,basicInformationReducers,driverInformationReducers,involvedVehicleReducers,peopleInInvolvedVehicleReducers,addressReducers,registrationBasicInformationReducers,userTypeReducers,trafficReducers,accidentReducers, accidentOnlyReducers } from "./Reducer";
 
 const reducers = combineReducers(
     {
@@ -13,6 +13,8 @@ const reducers = combineReducers(
         registrationBasicInformation:registrationBasicInformationReducers,
         userType:userTypeReducers,
         traffics:trafficReducers,
+        accident:accidentReducers,
+        accidentOnly:accidentOnlyReducers,
     }
 );
 
