@@ -5,8 +5,8 @@ const ReactMap = () => {
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tuZWIiLCJhIjoiY2xobHcwajA1MDdvcjNkcXJnZXUyZmVpayJ9.EIwIkxWvlA3CSiTwem0O_A';
   const mapContainer = useRef<any>(null);
   const map = useRef<any>(null);
-  const [lng, setLng] = useState(39.3);
-  const [lat, setLat] = useState(8.5);
+  const [lng, setLng] = useState(-73.8419063);
+  const [lat, setLat] = useState(41.0895249);
   const [zoom, setZoom] = useState(15);
 
   useEffect(() => {

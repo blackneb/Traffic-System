@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker, InputNumber} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,12 @@ import locale from 'antd/locale/zh_CN';
 
 
 const BasicInformation = ({next}:any) => {
+    const [latitude, setLatitude] = useState<any>("");
+    const [longitude, setLongitude] = useState<string>("");
+    const [error, setError] = useState<any>(null);
+    console.log(longitude);
+    console.log(latitude);
+
     const format = 'HH:mm';
     const dispatch = useDispatch();
     const basicInformation = useSelector((state:any) => state.basicInformation);
@@ -22,11 +28,27 @@ const BasicInformation = ({next}:any) => {
     const onFinishFailed = (errorInfo: any) => {
       console.log('Failed:', errorInfo);
     };
+
+    useEffect(() => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position:any) => {
+            setLatitude(position.coords.latitude.toString());
+            setLongitude(position.coords.longitude.toString());
+          },
+          (error:any) => {
+            setError(error.message);
+          }
+        );
+      } else {
+        setError('Geolocation is not supported by this browser.');
+      }
+    }, []);
   return (
     <div className='flex justify-center my-4'>
        <Form
         name="basic"
-        initialValues={basicInformation}
+        //initialValues={basicInformation}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
@@ -80,14 +102,6 @@ const BasicInformation = ({next}:any) => {
           </Form.Item>
 
           <Form.Item
-            label="Longitude"
-            name="longitude"
-            rules={[{ required: true, message: 'Please Enter the Longitude!' }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
             label="City"
             name="city"
             rules={[{ required: true, message: 'Please Enter the City!' }]}
@@ -96,11 +110,19 @@ const BasicInformation = ({next}:any) => {
           </Form.Item>
 
           <Form.Item
+            label="Longitude"
+            name="longitude"
+            rules={[{ required: true, message: 'Please Enter the Longitude!' }]}
+          >
+            <InputNumber defaultValue={longitude} />
+          </Form.Item>
+
+          <Form.Item
             label="Latitude"
             name="latitude"
             rules={[{ required: true, message: 'Please Enter the latitude!' }]}
           >
-            <Input />
+            <InputNumber defaultValue={latitude} />
           </Form.Item>
          
           <Form.Item

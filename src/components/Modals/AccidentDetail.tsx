@@ -7,6 +7,8 @@ const AccidentDetail = ({data}:any) => {
   const accidentInformation = useSelector((state:any) => state.accident.totalAccidents);
   const accidentInfo = accidentInformation.filter((items:any) =>  items.accidents.id === data.id);
   const involvedVehicles = accidentInfo[0].involvedVehicles;
+  const injured = accidentInfo[0].injuredPeoples;
+  const images = accidentInfo[0].images;
   console.log(involvedVehicles);
   return (
     <div className=''>
@@ -32,30 +34,54 @@ const AccidentDetail = ({data}:any) => {
             <Descriptions.Item label="Does the Driver Drunk?">{accidentInfo[0].drivers[0].isdrunk}</Descriptions.Item>
             <Descriptions.Item label="Driver House Number">{accidentInfo[0].drivers[0].house_number}</Descriptions.Item>
             <Descriptions.Item label="Involved Vehicles" span={3}>
-                Driver Name: Abebe Kebede
-                <br />
-                Owner Name: Kebede Abebe
-                <br />
-                Driver License Number: LCD3523LJ6453
-                <br />
-                Driver Phone Number: +2519457863
-                <br />
-                Owner Phone Number: +2519563214
-                <br />
-                Plate Number: 2AAB34567
-                <br />
+              {
+                involvedVehicles.map((items:any) => (
+                  <div>
+                    Driver Name:{items.driver_f_name + " "  + items.driver_l_name}
+                    <br />
+                    Owner Name: {items.owner_f_name + " " + items.owner_l_name}
+                    <br />
+                    Driver License Number: {items.driver_license_number}
+                    <br />
+                    Driver Phone Number: {items.driver_phone}
+                    <br />
+                    Owner Phone Number: {items.owner_phone}
+                    <br />
+                    Plate Number: 2AAB34567
+                    <br />
+                    <p>----------------------------------------------------</p>
+                  </div>
+                  ))
+              }
             </Descriptions.Item>
-            <Descriptions.Item label="Involved Vehicles" span={3}>
-                Name: Abebe Kebede
-                <br />
-                Phone Number: Kebede Abebe
-                <br />
+            <Descriptions.Item label="Injured People" span={3}>
+            {
+                injured.map((items:any) => (
+                  <div>
+                    Full Name:{items.f_name + " "  + items.l_name}
+                    <br />
+                    Injury Type: {items.injurytype}
+                    <br />
+                    Phone Number: {items.phone}
+                    <br />
+                    <p>----------------------------------------------------</p>
+                  </div>
+                  ))
+              }
             </Descriptions.Item>
             <Descriptions.Item label="Location" span={3}> <ReactMap/> </Descriptions.Item>
-            <Descriptions.Item label="Accident Images" span={3}>Any Driver</Descriptions.Item>
+            <Descriptions.Item label="Accident Images" span={3}>
+            {
+                images.map((items:any) => (
+                  <div>
+                    <img className='h-64' src={"http://blackneb.com/images/photos/" + items.image_path} alt="Description of the image" />
+                  </div>
+                  ))
+              }        
+            </Descriptions.Item>
             <Descriptions.Item label="QR Code">
               <div>
-              < QRCode value={data.id} size={250} />
+              < QRCode value={data.id.toString()} size={250} />
               </div>
             </Descriptions.Item>
         </Descriptions>
