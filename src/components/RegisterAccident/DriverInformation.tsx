@@ -34,7 +34,7 @@ const DriverInformation = ({next,prev}:any) => {
         <div className='flex flex-col'>
           <Form.Item
             label="First Name"
-            name="firstName"
+            name="driverfname"
             rules={[{ required: true, message: 'Please Enter the first name!' }]}
           >
            <Input />
@@ -42,7 +42,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Last Name"
-            name="lastName"
+            name="driverlname"
             rules={[{ required: true, message: 'Please Enter the last name!' }]}
           >
            <Input />
@@ -50,7 +50,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Age"
-            name="age"
+            name="driverage"
             rules={[{ required: true, message: 'Please Enter the age!' }]}
           >
            <Input />
@@ -58,7 +58,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Gender"
-            name="gender"
+            name="driverGender"
             rules={[{ required: true, message: 'Please Enter the Gender!' }]}
           >
            <Input />
@@ -66,7 +66,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="License Number"
-            name="licenseNumber"
+            name="driverLicenseNumber"
             rules={[{ required: true, message: 'Please Enter the License Number!' }]}
           >
            <Input />
@@ -74,7 +74,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Occupation"
-            name="occupation"
+            name="driverOccupation"
             rules={[{ required: true, message: 'Please Enter the Occupation!' }]}
           >
            <Input />
@@ -82,7 +82,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="House Number"
-            name="houseNumber"
+            name="driverHouseNumber"
             rules={[{ required: true, message: 'Please Enter the House Number!' }]}
           >
            <Input />
@@ -90,7 +90,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Sub City"
-            name="subCity"
+            name="driverSubcity"
             rules={[{ required: true, message: 'Please Enter the SubCity!' }]}
           >
            <Input />
@@ -98,15 +98,23 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Kebele"
-            name="kebele"
+            name="driverKebele"
             rules={[{ required: true, message: 'Please Enter the Kebele!' }]}
           >
            <Input />
           </Form.Item>
 
           <Form.Item
+            label="Woreda"
+            name="driverWoreda"
+            rules={[{ required: true, message: 'Please Enter the Woreda!' }]}
+          >
+           <Input />
+          </Form.Item>
+
+          <Form.Item
             label="Phone Number"
-            name="phoneNumber"
+            name="driverPhonenumber"
             rules={[{ required: true, message: 'Please Enter the Phone Number!' }]}
           >
            <Input />
@@ -114,7 +122,7 @@ const DriverInformation = ({next,prev}:any) => {
 
           <Form.Item
             label="Is Drunk?"
-            name="drunk"
+            name="isDrunk"
             rules={[{ required: true, message: 'Please Enter the Drunk!' }]}
           >
            <Input />

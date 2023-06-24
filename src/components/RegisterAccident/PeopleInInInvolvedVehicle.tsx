@@ -4,7 +4,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { add_people_in_involved_vehicle } from '../../redux/Actions';
 
-const PeopleInInInvolvedVehicle = ({prev}:any) => {
+const PeopleInInInvolvedVehicle = ({next,prev}:any) => {
     const dispatch = useDispatch();
     const peopleInInvolvedVehicle = useSelector((state:any) => state.peopleInInvolvedVehicle);
 
@@ -45,6 +45,13 @@ const PeopleInInInvolvedVehicle = ({prev}:any) => {
       >
         <div className='flex flex-col'>
           <Form.Item
+              label="Injury Type"
+              name="injuryType"
+              rules={[{ required: true, message: 'Please Enter the Phone Number!' }]}
+            >
+           <Input />
+          </Form.Item>
+          <Form.Item
             label="First Name"
             name="firstName"
             rules={[{ required: true, message: 'Please Enter the first name!' }]}
@@ -62,7 +69,7 @@ const PeopleInInInvolvedVehicle = ({prev}:any) => {
 
           <Form.Item
             label="Phone Number"
-            name="phoneNUmber"
+            name="phone"
             rules={[{ required: true, message: 'Please Enter the Phone Number!' }]}
           >
            <Input />
@@ -76,8 +83,8 @@ const PeopleInInInvolvedVehicle = ({prev}:any) => {
             </Button>
         </div>
         <div className='flex flex-row justify-center'>
-          <Button style={{ margin: '0 8px' }} type="default" onClick={() => confirmSubmission()}>
-            Done
+          <Button style={{ margin: '0 8px' }} type="default" onClick={() => next()}>
+            Next
           </Button>
           <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
             Previous

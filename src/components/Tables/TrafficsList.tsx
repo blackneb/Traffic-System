@@ -6,16 +6,17 @@ import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/inter
 const { Search } = Input;
 
 interface DataType{
-    id:string,
-    f_name:string,
-    l_name:string,
-    user_name:string,
-    email:string,
-    phone:string
+    admin:string;
+    email:string;
+    f_name:string;
+    l_name:string;
+    p_image:string;
+    phone:string;
+    user_name:string;
   }
 
 const TrafficsList = ({data}:any) => {
-    const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
+  const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -84,7 +85,7 @@ const TrafficsList = ({data}:any) => {
       </Modal>
       <p>Traffic Table</p>
       <Input className='mb-2' placeholder="Search With Traffic Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}}  onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.f_name.toLowerCase().includes(searchValue))}  onChange={handleChange} />
     </div>
   )
 }

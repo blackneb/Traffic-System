@@ -36,21 +36,21 @@ const InvolvedVehicle = ({next,prev}:any) => {
               >
               <Input.Group compact>
                   <Form.Item
-                  name="plateCode"
+                  name="icode"
                   noStyle
                   rules={[{ required: true, message: 'plate code is required' }]}
                   >
-                  <InputNumber style={{ width: '20%' }} placeholder="Code" />
+                  <Input style={{ width: '20%' }} placeholder="Code" />
                   </Form.Item>
                   <Form.Item
-                  name='plateCountry'
+                  name='icity'
                   noStyle
                   rules={[{ required: true, message: 'plate country is required' }]}
                   >
                   <Input style={{ width: '30%' }} placeholder="City" />
                   </Form.Item>
                   <Form.Item
-                  name='plateNumber'
+                  name='inumber'
                   noStyle
                   rules={[{ required: true, message: 'plate number is required' }]}
                   >
@@ -60,7 +60,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
           </Form.Item>
           <Form.Item
               label="Driver First Name"
-              name="driverFirstName"
+              name="driverFname"
               rules={[{ required: true, message: 'Please Enter the driver first name!' }]}
           >
             <Input />
@@ -68,7 +68,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
           <Form.Item
             label="Driver Last Name"
-            name="driverLastName"
+            name="driverLname"
             rules={[{ required: true, message: 'Please Enter the driver first name!' }]}
           >
            <Input />
@@ -76,7 +76,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
           <Form.Item
             label="Owner First Name"
-            name="ownerFirstName"
+            name="ownerFname"
             rules={[{ required: true, message: 'Please Enter the owner first name!' }]}
           >
            <Input />
@@ -84,7 +84,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
           <Form.Item
             label="Owner Last Name"
-            name="ownerLastName"
+            name="ownerLname"
             rules={[{ required: true, message: 'Please Enter the owner first name!' }]}
           >
            <Input />
@@ -92,7 +92,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
           <Form.Item
             label="Driver License Number"
-            name="driverLicenseNumber"
+            name="driverLicencenumber"
             rules={[{ required: true, message: 'Please Enter the driver license number!' }]}
           >
            <Input />
@@ -100,7 +100,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
           <Form.Item
             label="Driver Phone Number"
-            name="driverPhoneNumber"
+            name="driverPhone"
             rules={[{ required: true, message: 'Please Enter the driver phone number!' }]}
           >
            <Input />
@@ -108,7 +108,7 @@ const InvolvedVehicle = ({next,prev}:any) => {
 
           <Form.Item
             label="Owner Phone Number"
-            name="ownerPhoneNumber"
+            name="ownerPhone"
             rules={[{ required: true, message: 'Please Enter the owner phone number!' }]}
           >
            <Input />

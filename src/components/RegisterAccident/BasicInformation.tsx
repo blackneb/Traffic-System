@@ -3,11 +3,16 @@ import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker, InputNum
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { add_basic_information } from '../../redux/Actions';
+import moment from 'moment';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import locale from 'antd/locale/zh_CN';
+
 
 const BasicInformation = ({next}:any) => {
+    const format = 'HH:mm';
     const dispatch = useDispatch();
     const basicInformation = useSelector((state:any) => state.basicInformation);
-  
     const onFinish = async (values: any) => {
       console.log('Success:', values);
       dispatch(add_basic_information(values));
@@ -40,10 +45,10 @@ const BasicInformation = ({next}:any) => {
                   noStyle
                   rules={[{ required: true, message: 'plate code is required' }]}
                   >
-                  <InputNumber style={{ width: '20%' }} placeholder="Code" />
+                  <Input style={{ width: '20%' }} placeholder="Code" />
                   </Form.Item>
                   <Form.Item
-                  name='plateCountry'
+                  name='plateCity'
                   noStyle
                   rules={[{ required: true, message: 'plate country is required' }]}
                   >
@@ -63,7 +68,7 @@ const BasicInformation = ({next}:any) => {
             name="date"
             rules={[{ required: true, message: 'Please Enter the date!' }]}
           >
-           <DatePicker />
+           <DatePicker/>
           </Form.Item>
 
           <Form.Item
@@ -71,13 +76,21 @@ const BasicInformation = ({next}:any) => {
             name="time"
             rules={[{ required: true, message: 'Please Enter the Time!' }]}
           >
-            <TimePicker />
+            <TimePicker format={format} />
           </Form.Item>
 
           <Form.Item
             label="Longitude"
             name="longitude"
             rules={[{ required: true, message: 'Please Enter the Longitude!' }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="City"
+            name="city"
+            rules={[{ required: true, message: 'Please Enter the City!' }]}
           >
             <Input />
           </Form.Item>
@@ -116,7 +129,7 @@ const BasicInformation = ({next}:any) => {
 
           <Form.Item
             label="Road Side Far"
-            name="roadSideFar"
+            name="roadSidefar"
             rules={[{ required: true, message: 'Please Enter the Road Side Far!' }]}
           >
             <Input />
@@ -124,7 +137,7 @@ const BasicInformation = ({next}:any) => {
 
           <Form.Item
             label="Number Of Injured People"
-            name="numberOfInjuredPeople"
+            name="injPeoplenumber"
             rules={[{ required: true, message: 'Please Enter the Number of injured people!' }]}
           >
             <Input />
@@ -132,7 +145,7 @@ const BasicInformation = ({next}:any) => {
 
           <Form.Item
             label="Number Of Death"
-            name="numberOfDeath"
+            name="deathNumber"
             rules={[{ required: true, message: 'Please Enter the Number of Death!' }]}
           >
             <Input />

@@ -6,6 +6,7 @@ import BasicInformation from './RegisterAccident/BasicInformation';
 import DriverInformation from './RegisterAccident/DriverInformation';
 import InvolvedVehicle from './RegisterAccident/InvolvedVehicle';
 import PeopleInInInvolvedVehicle from './RegisterAccident/PeopleInInInvolvedVehicle';
+import AccidentImages from './RegisterAccident/AccidentImages';
 
 const RegisterAccident = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,12 @@ const RegisterAccident = () => {
       content: <InvolvedVehicle next={next} prev={prev}/> ,
     },
     {
-        title: 'People In Involved Vehicles',
-        content: <PeopleInInInvolvedVehicle prev={prev}/> ,
+        title: 'Injured Persons',
+        content: <PeopleInInInvolvedVehicle next={next} prev={prev}/> ,
+      },
+      {
+        title: 'Accident Images',
+        content: <AccidentImages prev={prev}/> ,
       }
   ];
   const { token } = theme.useToken();
