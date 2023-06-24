@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker,InputNumber} from 'antd';
+import { Button, Checkbox, Form, Input, Upload, notification, DatePicker, TimePicker,InputNumber} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { UploadOutlined } from '@ant-design/icons';
@@ -8,6 +8,7 @@ import axios from 'axios';
 
 const AccidentImages = ({prev}:any) => {
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
     const peopleInInvolvedVehicle = useSelector((state:any) => state.peopleInInvolvedVehicle);
     const userType:string = useSelector((state:any) => state.userType.admin).toString();
     console.log(userType)
@@ -17,6 +18,7 @@ const AccidentImages = ({prev}:any) => {
   
     const formData = new FormData();
     const onFinish = async (values: any) => {
+        setLoading(true);
         console.log(basicInformation)
         console.log(driverInformation)
         console.log(involvedVehicle)
@@ -63,14 +65,26 @@ const AccidentImages = ({prev}:any) => {
             const sendData = JSON.stringify(jsonArray,null,2);
             console.log(JSON.stringify(jsonArray,null,2))
             axios.post("http://ais.blackneb.com/api/traffic/registeraccident", jsonArray).then(response => {
-                console.log(response.data);
+                console.log(response.data[0].status);
+                if(response.data[0].status === "created"){
+                  notification.success({
+                    message: 'success',
+                    description: 'Accident Registered Successfully',
+                  });
+                  setLoading(false);
+                }
+                else{
+                  setLoading(false);
+                }
             })
           console.log("posting info...")
         }
         else{
+          setLoading(false);
             console.log("Item Upload Failed");
         }
     })
+    
       };
     
     const onFinishFailed = (errorInfo: any) => {
@@ -121,7 +135,7 @@ const AccidentImages = ({prev}:any) => {
         </div>
         <div className='flex flex-row justify-center'>
             <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
-              Finish
+              {loading ? 'Uploading...' : 'Finish'}
             </Button>
             <Button style={{ margin: '0 8px' }} type="default" onClick={() => prev()}>
                 Prev

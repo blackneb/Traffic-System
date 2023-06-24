@@ -114,7 +114,7 @@ const BasicInformation = ({next}:any) => {
             name="longitude"
             rules={[{ required: true, message: 'Please Enter the Longitude!' }]}
           >
-            <InputNumber defaultValue={longitude} />
+            <Input defaultValue={longitude} />
           </Form.Item>
 
           <Form.Item
@@ -122,7 +122,7 @@ const BasicInformation = ({next}:any) => {
             name="latitude"
             rules={[{ required: true, message: 'Please Enter the latitude!' }]}
           >
-            <InputNumber defaultValue={latitude} />
+            <Input defaultValue={latitude} />
           </Form.Item>
          
           <Form.Item

@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../widgets/layouts/SideBar';
 import NavBar from '../widgets/layouts/NavBar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -39,7 +39,7 @@ function DashboardMain() {
   ]
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
       <NavBar/>
       <div className='flex flex-row'>
         <div>
@@ -78,7 +78,7 @@ function DashboardMain() {
 
       </div>
       
-        </BrowserRouter>
+        </HashRouter>
     </div>
   );
 }

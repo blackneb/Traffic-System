@@ -3,8 +3,6 @@ import type { TableProps } from 'antd';
 import { Button, Space, Table,Input, Modal } from 'antd';
 import { Progress } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
-import {vehicles} from '../../data/vehicles';
-import ProgressModal from '../Modals/ProgressModal';
 const { Search } = Input;
 
 interface DataType {
