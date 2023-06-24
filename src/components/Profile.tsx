@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 import { useSelector } from 'react-redux';
-
+import axios from 'axios';
 const Profile = () => {
   const dispatch = useDispatch();
   const profileData = useSelector((state:any) => state.userType);
@@ -13,6 +13,16 @@ const Profile = () => {
   ]
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    axios.post("http://ais.blackneb.com/api/traffic/updateaccount", values).then((response:any) => {
+      console.log(response.data[0].status);
+      if(response.data[0].status === "updated successfuly"){
+        notification.success({
+          message: 'success',
+          description: 'Account updated Successfully',
+        });
+      }
+    })
+
   };
   
   const onFinishFailed = (errorInfo: any) => {
@@ -45,20 +55,20 @@ const Profile = () => {
             colon={false}
             >
               <div className='flex flex-col'>
-              <Form.Item label="User Name" name="username" rules={[{ required: true, message: 'Please Enter username!' }]}>
-                <Input placeholder="" defaultValue={profileData.user_name}/>
+              <Form.Item label="User Name" name="username" initialValue={profileData.user_name} rules={[{ required: true, message: 'Please Enter username!' }]}>
+                <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="First Name" name="firstName" rules={[{ required: true, message: 'Please Enter First Name!' }]}>
-                <Input placeholder="" defaultValue={profileData.f_name}/>
+              <Form.Item label="First Name" name="f_name" initialValue={profileData.f_name} rules={[{ required: true, message: 'Please Enter First Name!' }]}>
+                <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="Last Name" name="lastName" rules={[{ required: true, message: 'Please Enter Last Name!' }]}>
-                <Input placeholder="" defaultValue={profileData.l_name}/>
+              <Form.Item label="Last Name" name="l_name" initialValue={profileData.l_name} rules={[{ required: true, message: 'Please Enter Last Name!' }]}>
+                <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please Enter Email!' }]}>
-                <Input placeholder="" defaultValue={profileData.email}/>
+              <Form.Item label="Email" name="email" initialValue={profileData.email} rules={[{ required: true, message: 'Please Enter Email!' }]}>
+                <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please enter Phone!' }]}>
-                <Input placeholder="" defaultValue={profileData.phone}/>
+              <Form.Item label="Phone" name="phone" initialValue={profileData.phone} rules={[{ required: true, message: 'Please enter Phone!' }]}>
+                <Input placeholder=""/>
               </Form.Item>
               </div>
               <div className='flex flex-row justify-center'>
