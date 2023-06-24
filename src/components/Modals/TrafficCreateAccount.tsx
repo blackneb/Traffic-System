@@ -1,6 +1,8 @@
-import React from 'react'
-import { Button, Form, Input, Upload} from 'antd';
+import React, {useState} from 'react'
+import { Button, Form, Input, Upload, notification} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import loading from '../../images/loading.gif'
+
 
 import axios from 'axios';
 
@@ -21,8 +23,10 @@ interface json{
 
 
 const TrafficCreateAccount = () => {
+  const [isLoading, setIsLoading] = useState(false);
     const formData = new FormData();
     const onFinish = async (values: any) => {
+      setIsLoading(true);
         //console.log('Success:', values);
         console.log(values.pimage.file);
         //console.log(JSON.stringify(jsonArray,null,2));
@@ -45,18 +49,42 @@ const TrafficCreateAccount = () => {
             "admin_id":"2",
             "email":values.email
           }
+          console.log(JSON.stringify(jsonArray,null,2));
           axios.post("http://ais.blackneb.com/api/traffic/addnewtraffic",jsonArray).then(response => {
-            console.log(res.data);
+            console.log(response.data[0].status);
+            if(response.data[0].status === "created"){
+              setIsLoading(false);
+              notification.success({
+                message: 'Success',
+                description: 'Traffic Account created successfully',
+              });
+            }
+            else if(response.data[0].status === "failed"){
+              setIsLoading(false);
+              notification.error({
+                message: 'Error',
+                description: 'Traffic Account is not created',
+              });
+            }
           })
         }
         else{
             console.log("Item Upload Failed");
+            setIsLoading(false);
+            notification.error({
+              message: 'Error',
+              description: 'Traffic Account is not created',
+            });
         }
     })
       };
 
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
+        notification.error({
+          message: 'Error',
+          description: 'Traffic Account is not created',
+        });
       };
   return (
     <div className='flex justify-center'>
@@ -138,8 +166,8 @@ const TrafficCreateAccount = () => {
           </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
-          <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
-            Create Account
+          <Button style={{ margin: '0 8px', padding:'2px' }} type="default" htmlType="submit">
+          {isLoading ? <div className='flex flex-row justify-center align-center'><img src={loading} alt="" className="w-8"/><p>Creating Account</p></div> : 'Create Account'}
           </Button>
         </div>
       </Form>

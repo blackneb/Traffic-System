@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Loginvector from '../images/Traffic.jpg'
+import loadingsec from '../images/loadingsec.gif'
 import { useForm } from 'react-hook-form'
-import { Button, Input, Form } from 'antd'
+import { Button, Input, Form, notification } from 'antd'
 import { UserOutlined } from '@ant-design/icons';
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +12,9 @@ import axios from 'axios';
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+type NotificationType = 'success' | 'info' | 'warning' | 'error';
+
 
 // const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 //   props,
@@ -26,12 +30,25 @@ interface loginprofile {
 }
 
 const Login = ({setlog, setCreateAccount}:any) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const [servity, setServity] = useState<any>("error");
   const vertical = 'top'
   const horizontal = 'right'
   const {register, handleSubmit} = useForm<loginprofile>();
+
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotificationWithIcon = (type: NotificationType) => {
+    api[type]({
+      message: 'Notification Title',
+      description:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+    });
+  };
+
+
   const handleClick = () => {
     setOpen(true);
   };
@@ -44,6 +61,7 @@ const Login = ({setlog, setCreateAccount}:any) => {
     setOpen(false);
   };
   const onFinish = async (values: any) => {
+    setIsLoading(true);
     console.log('Success:', values);
     try {
       const response = await axios.post('http://ais.blackneb.com/api/token/', values, {
@@ -66,15 +84,30 @@ const Login = ({setlog, setCreateAccount}:any) => {
         setlog(true);
       }
       else{
+        setIsLoading(false);
         handleClick();
+        notification.error({
+          message: 'Error',
+          description: 'Login Failed.',
+        });
       }
       }
       catch(error){
+        setIsLoading(false);
         handleClick();
+        notification.error({
+          message: 'Error',
+          description: 'Login Failed.',
+        });
       }
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
       handleClick();
+      notification.error({
+        message: 'Error',
+        description: 'Login Failed.',
+      });
     }
     //setlog(true);
     
@@ -127,7 +160,9 @@ const Login = ({setlog, setCreateAccount}:any) => {
               <div className="text-right mt-2">
                 <a href="#" className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
               </div>                
-              <Button htmlType="submit"className="w-full h-10 block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 hover:text-white text-white text font-semibold rounded-lg mt-6">Log in</Button>
+              <Button htmlType="submit"className="w-full bg-blue-700 text-white">
+              {isLoading ? <div className='flex flex-row justify-center align-center'><img src={loadingsec} alt="" className="w-8"/><p>Logging in</p></div> : 'Log in'}
+              </Button>
               </Form>
 
             <hr className="my-6 border-gray-300 w-full"/>
