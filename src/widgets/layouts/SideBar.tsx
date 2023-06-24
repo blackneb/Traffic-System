@@ -22,8 +22,7 @@ const Sidebar = () => {
         { title: 'Accidents', path: '/taccidents', src: <SiFuturelearn />, auth:"traffic" },
         { title: 'Register Accident', path: '/registeraccident', src: <SiFuturelearn />, auth:"traffic" },
         { title: 'Statistics', path: '/statistics', src: <FcStatistics />, auth:"admin" },
-        { title:'Documentation',path:'/documentation',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
-        { title: 'Accidents', path:'/aaccidents', src:<AiFillCar/>, auth:"admin"},
+        { title: 'Accidents', path:'/aaccidents', src:<AiFillCar/>,gap: 'false', auth:"admin"},
     ]
     useEffect(() => {
         const sideBarLists = Menus.filter((items:any) => items.auth === userType);

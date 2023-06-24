@@ -6,6 +6,7 @@ import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
@@ -26,14 +27,20 @@ const { Search } = Input;
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
     const avatar = useSelector((state:any) => state.userType.p_image);
     const avatarImage = "https://blackneb.com/images/photos/" + avatar;
     const userName = useSelector((state:any) => state.userType.user_name);
+    const fullName = useSelector((state:any) => state.userType.f_name) + " " + useSelector((state:any) => state.userType.l_name);
     const onSearch = (value: string) => alert(value);
+    const logout = () => {
+      navigate("/");
+      window.location.reload();
+
+    }
     const Menus = [
       { title: 'Home', path: '/' },
       { title: 'Calander', path:'/calander'},
-      { title: 'Reports', path: '/reports'},
   ]
 
   const menusMobile = [
@@ -67,18 +74,9 @@ const NavBar = () => {
     {
       key: '3',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          Settings
-        </a>
-      ),
-      icon: <SettingOutlined />,
-    },
-    {
-      key: '4',
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          Log out
-        </a>
+        <div>
+          <p onClick={() => logout()} >Logout</p>          
+        </div>
       ),
       icon: <LogoutOutlined />,
     },
@@ -115,11 +113,11 @@ const NavBar = () => {
               </div>
             </div>
             <div className='hidden md:flex justify-end ml-4'>
-                    <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
+                    
                     <Dropdown menu={{ items }} placement="bottom" arrow>
-                      <Avatar src={avatarImage} className='mx-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
+                      <Avatar src={avatarImage} className='mx-4' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
                     </Dropdown>
-                    <p>{userName}</p>
+                    {/* <p className='text-xs'>{fullName}</p> */}
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
