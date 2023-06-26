@@ -23,7 +23,7 @@ const Accidents = () => {
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
     const initialState = {}
-    axios.get("http://ais.blackneb.com/api/traffic/getaccidents").then((response:any) => {
+    axios.get("https://ais.blackneb.com/api/traffic/getaccidents").then((response:any) => {
       const accidents = response.data[0];
       const drivers = response.data[1];
       const plates = response.data[2];

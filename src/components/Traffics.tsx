@@ -24,7 +24,7 @@ const Traffics = () => {
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
     try{
-      axios.get("http://ais.blackneb.com/api/traffic/gettraffic").then((response:any) => {
+      axios.get("https://ais.blackneb.com/api/traffic/gettraffic").then((response:any) => {
         console.log(response.data);
         dispatch(traffics(response.data));
       })

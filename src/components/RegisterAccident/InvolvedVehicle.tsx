@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Form, Input, Upload, DatePicker, TimePicker,InputNumber} from 'antd';
+import { Button, Checkbox, Form, Input, notification, Upload, DatePicker, TimePicker,InputNumber} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { add_involved_vehicle } from '../../redux/Actions';
@@ -12,6 +12,10 @@ const InvolvedVehicle = ({next,prev}:any) => {
     const onFinish = async (values: any) => {
       console.log('Success:', values);
       dispatch(add_involved_vehicle(values));
+      notification.success({
+        message: 'success',
+        description: 'Involved vehicle added',
+      });
     };
     
     const onFinishFailed = (errorInfo: any) => {

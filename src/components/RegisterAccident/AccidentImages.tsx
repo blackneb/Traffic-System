@@ -52,7 +52,7 @@ const AccidentImages = ({prev}:any) => {
         // for( let i=0;i<values.pimage.file.length; i++){
         //   formData.append("image[]", values.file[i]);
         // }
-      axios.post( "http://blackneb.com/images/Upload_file.php", formData).then(res => {
+      axios.post( "https://blackneb.com/images/Upload_file.php", formData).then(res => {
         console.log(res.data);
         if(res.data.status === "success"){
             const image = {
@@ -64,7 +64,7 @@ const AccidentImages = ({prev}:any) => {
             const jsonArray = { ...json, ...driverInformation, ...involvedVehicle, ...peopleInInvolvedVehicle, ...image, ...traffic_id };
             const sendData = JSON.stringify(jsonArray,null,2);
             console.log(JSON.stringify(jsonArray,null,2))
-            axios.post("http://ais.blackneb.com/api/traffic/registeraccident", jsonArray).then(response => {
+            axios.post("https://ais.blackneb.com/api/traffic/registeraccident", jsonArray).then(response => {
                 console.log(response.data[0].status);
                 if(response.data[0].status === "created"){
                   notification.success({

@@ -64,14 +64,14 @@ const Login = ({setlog, setCreateAccount}:any) => {
     setIsLoading(true);
     console.log('Success:', values);
     try {
-      const response = await axios.post('http://ais.blackneb.com/api/token/', values, {
+      const response = await axios.post('https://ais.blackneb.com/api/token/', values, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
       await console.log(response.data);
       try{
-        const res =  await axios.post('http://ais.blackneb.com/api/traffic/login', values, {
+        const res =  await axios.post('https://ais.blackneb.com/api/traffic/login', values, {
         headers: {
           Authorization: `Bearer ${response.data.access}`,
           'Content-Type': 'application/json',

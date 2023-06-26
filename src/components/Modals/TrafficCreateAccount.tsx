@@ -35,7 +35,7 @@ const TrafficCreateAccount = () => {
         // for( let i=0;i<values.pimage.file.length; i++){
         //   formData.append("image[]", values.file[i]);
         // }
-      axios.post( "http://blackneb.com/images/Upload_file.php", formData).then(res => {
+      axios.post( "https://blackneb.com/images/Upload_file.php", formData).then(res => {
         console.log(res.data);
         if(res.data.status === "success"){
           console.log("posting info...")
@@ -50,7 +50,7 @@ const TrafficCreateAccount = () => {
             "email":values.email
           }
           console.log(JSON.stringify(jsonArray,null,2));
-          axios.post("http://ais.blackneb.com/api/traffic/addnewtraffic",jsonArray).then(response => {
+          axios.post("https://ais.blackneb.com/api/traffic/addnewtraffic",jsonArray).then(response => {
             console.log(response.data[0].status);
             if(response.data[0].status === "created"){
               setIsLoading(false);

@@ -13,7 +13,7 @@ const Profile = () => {
   ]
   const onFinish = (values: any) => {
     console.log('Success:', values);
-    axios.post("http://ais.blackneb.com/api/traffic/updateaccount", values).then((response:any) => {
+    axios.post("https://ais.blackneb.com/api/traffic/updateaccount", values).then((response:any) => {
       console.log(response.data[0].status);
       if(response.data[0].status === "updated successfuly"){
         notification.success({

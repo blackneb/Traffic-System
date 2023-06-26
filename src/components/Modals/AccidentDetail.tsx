@@ -23,7 +23,7 @@ const AccidentDetail = ({data}:any) => {
             <Descriptions.Item label="Number of Injured People" span={3}>{data.injured_people_number}</Descriptions.Item>
             <Descriptions.Item label="Number of Death" span={2}>{data.death_number}</Descriptions.Item>
             <Descriptions.Item label="Current Estimation">{data.cost_estimation}</Descriptions.Item>
-            <Descriptions.Item label="Driver Name" span={2}>{accidentInfo[0].drivers[0].f_name}</Descriptions.Item>
+            <Descriptions.Item label="Driver Name" span={2}>{accidentInfo[0].drivers[0].f_name + " " + accidentInfo[0].drivers[0].l_name}</Descriptions.Item>
             <Descriptions.Item label="Driver Age">{accidentInfo[0].drivers[0].age}</Descriptions.Item>
             <Descriptions.Item label="Driver Gender" span={2}>{accidentInfo[0].drivers[0].gender}</Descriptions.Item>
             <Descriptions.Item label="Driver License Number">{accidentInfo[0].drivers[0].license_number}</Descriptions.Item>
@@ -74,7 +74,7 @@ const AccidentDetail = ({data}:any) => {
             {
                 images.map((items:any) => (
                   <div>
-                    <img className='h-64' src={"http://blackneb.com/images/photos/" + items.image_path} alt="Description of the image" />
+                    <img className='h-64' src={"https://blackneb.com/images/photos/" + items.image_path} alt="Description of the image" />
                   </div>
                   ))
               }        
