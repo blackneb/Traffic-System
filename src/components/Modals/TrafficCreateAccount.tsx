@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Button, Form, Input, Upload, notification} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import loading from '../../images/loading.gif'
@@ -24,6 +24,7 @@ interface json{
 
 const TrafficCreateAccount = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [password, setPassword] = useState("");
     const formData = new FormData();
     const onFinish = async (values: any) => {
       setIsLoading(true);
@@ -41,7 +42,7 @@ const TrafficCreateAccount = () => {
           console.log("posting info...")
           const jsonArray:json = {
             "username":values.userName,
-            "password":values.password,
+            "password":password,
             "firstname":values.firstName,
             "lastname":values.lastName,
             "phone":values.phone,
@@ -49,6 +50,14 @@ const TrafficCreateAccount = () => {
             "admin_id":"2",
             "email":values.email
           }
+          const sendEmail = {
+            email:values.email,
+            title:"Traffic Account Create",
+            message:`your user name is ${values.userName} and password is ${password}`
+          }
+          axios.post("http://ais.blackneb.com/api/ais/sendemail",sendEmail).then((response) => {
+            console.log(response.data);
+          })
           console.log(JSON.stringify(jsonArray,null,2));
           axios.post("https://ais.blackneb.com/api/traffic/addnewtraffic",jsonArray).then(response => {
             console.log(response.data[0].status);
@@ -86,6 +95,18 @@ const TrafficCreateAccount = () => {
           description: 'Traffic Account is not created',
         });
       };
+      useEffect(() => {
+        const passwordLength = 10; 
+        const passwordChars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()ABCDEFGHIJKLMOPQRSTUVWXYZ"; // Define characters to be included in the password
+
+        let generatedPassword = "";
+        for (let i = 0; i < passwordLength; i++) {
+          const randomIndex = Math.floor(Math.random() * passwordChars.length);
+          generatedPassword += passwordChars[randomIndex];
+        }
+
+        setPassword(generatedPassword);
+      }, [])
   return (
     <div className='flex justify-center'>
       <Form
@@ -157,13 +178,6 @@ const TrafficCreateAccount = () => {
             <Input />
           </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please generate password!' }]}
-          >
-            <Input.Password/>
-          </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
           <Button style={{ margin: '0 8px', padding:'2px' }} type="default" htmlType="submit">
