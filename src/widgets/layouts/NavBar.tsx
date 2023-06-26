@@ -7,6 +7,8 @@ import { Button, Dropdown } from 'antd';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getCookie, setCookie } from 'typescript-cookie'
+
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
@@ -35,7 +37,10 @@ const NavBar = () => {
     const onSearch = (value: string) => alert(value);
     const logout = () => {
       navigate("/");
+      setCookie("username","false",{ expires: -1 });
+      setCookie("password","false",{ expires: -1 });
       window.location.reload();
+      
 
     }
     const Menus = [
