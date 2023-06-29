@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Transition } from "@headlessui/react";
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../images/logo.jpg'
 import { Input, Avatar } from 'antd';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
@@ -96,7 +97,7 @@ const NavBar = () => {
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-start w-full h-16">
           <div className="flex-shrink-0">
-                <p className='text-zinc-800 w-48'>LOGO</p>
+              <img src={logo} alt="" className="h-16 rounded-full"/>
               </div>
             <div className="flex items-center justify-start w-full">
               <div className="hidden md:block">

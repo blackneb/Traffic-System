@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
-const ReactMap = () => {
+const ReactMap = ({longitude, latitude}:any) => {
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmxhY2tuZWIiLCJhIjoiY2xobHcwajA1MDdvcjNkcXJnZXUyZmVpayJ9.EIwIkxWvlA3CSiTwem0O_A';
   const mapContainer = useRef<any>(null);
   const map = useRef<any>(null);
-  const [lng, setLng] = useState(-73.8419063);
-  const [lat, setLat] = useState(41.0895249);
+  const [lng, setLng] = useState(longitude);
+  const [lat, setLat] = useState(latitude);
   const [zoom, setZoom] = useState(15);
 
   useEffect(() => {

@@ -69,7 +69,7 @@ const AccidentDetail = ({data}:any) => {
                   ))
               }
             </Descriptions.Item>
-            <Descriptions.Item label="Location" span={3}> <ReactMap/> </Descriptions.Item>
+            <Descriptions.Item label="Location" span={3}> <ReactMap longitude={data.longitude} latitude={data.latitude}/> </Descriptions.Item>
             <Descriptions.Item label="Accident Images" span={3}>
             {
                 images.map((items:any) => (

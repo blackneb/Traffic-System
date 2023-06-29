@@ -26,7 +26,7 @@ const ChangePassword = () => {
             oldpassword:values.oldPassword,
             newpassword:values.newPassword
           }
-          axios.post("http://ais.blackneb.com/api/traffic/changepassword",subdata).then((response:any) => {
+          axios.post("https://ais.blackneb.com/api/traffic/changepassword",subdata).then((response:any) => {
             if(response.data[0].status === "password changed successfuly"){
               notification.success({
                 message: 'Success',

@@ -21,7 +21,7 @@ const AllAccideltsTable = ({data}:any) => {
   const [selectedvalue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
-    setSearchValue(e.target.value.toLowerCase());
+    setSearchValue(e.target.value);
   };
   
 
@@ -95,7 +95,7 @@ const AllAccideltsTable = ({data}:any) => {
       </Modal>
       <p>Accidents Table</p>
       <Input className='mb-2' placeholder="Search With Driver Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.date.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
